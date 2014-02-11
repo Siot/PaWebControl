@@ -18,6 +18,7 @@ input[type="text"]{
 }
 #sinks {
 	padding-right: 30px;
+	padding-left: 5px;
 }
 body{
 	margin:0;
