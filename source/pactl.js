@@ -17,7 +17,7 @@ function showPanel(data){
 	$.each( data.inputs, function(key, value){
 		composition='<div class="inputsink">';
 		composition+='<input type="text" value="'+value.volume+'" disabled />';
-		composition+=value.name+"->"+ data.sinks[value.sink].description;
+		composition+=value.name; //+"->"+ data.sinks[value.sink].description;
 		composition+='<input id="i'+value.id+'" type="range" min="0" max="153" step="1" value="'+value.volume+'" />'
 		composition+="</div>";
 		$("#d"+value.sink).append(composition);
@@ -43,9 +43,9 @@ function resetActive(){
 
 // No activity do something.
 function inActive(){
-    $(document.body).attr('class', 'inactive');
-    xhr_get({});
-    resetActive();
+   $(document.body).attr('class', 'inactive');
+   xhr_get({});
+   resetActive();
 }
 
 function xhr_get(parameters){

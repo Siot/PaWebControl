@@ -3,6 +3,7 @@ input[type="range"]{
 	width: 99%;
 	margin: 0;
 	vertical-align:middle;
+	border: 0;
 }
 input[type="text"]{
 	width: 3em;
@@ -14,6 +15,9 @@ input[type="text"]{
 }
 #sinks div{
 	padding:2px 0;
+}
+#sinks {
+	padding-right: 30px;
 }
 body{
 	margin:0;
