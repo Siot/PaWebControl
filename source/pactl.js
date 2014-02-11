@@ -1,9 +1,7 @@
-var intervalID;
+var activityTimeout = setTimeout(inActive, 2000);
+
 $(document).ready(function() {
 	xhr_get({});
-	
-	//intervalID = window.setInterval("xhr_get({})", 1500);
-	
 });
 
 function showPanel(data){
@@ -29,10 +27,26 @@ function showPanel(data){
        xhr_get({id: this.id, volume: this.value});
      //  intervalID = window.setInterval("xhr_get({})", 1000);
     });
-    $('input[type="range"]').on("mousedown",function(){
-     //  window.clearInterval(intervalID);
-    });
     
+    $('input[type="range"]').on('touchstart mousedown', function(){
+		clearTimeout(activityTimeout);
+	});
+	$('input[type="range"]').on('touchend mouseup', function(){
+		resetActive();
+	});
+}
+
+function resetActive(){
+    $(document.body).attr('class', 'active');
+    clearTimeout(activityTimeout);
+    activityTimeout = setTimeout(inActive, 2000);
+}
+
+// No activity do something.
+function inActive(){
+    $(document.body).attr('class', 'inactive');
+    xhr_get({});
+    resetActive();
 }
 
 function xhr_get(parameters){
