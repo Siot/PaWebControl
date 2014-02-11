@@ -19,3 +19,7 @@ Simplest way using standalone php web server:
 Use:
 
 Point to IP:8000 of the web server with a web browser from any gadget on your lan.
+
+Roadmap:
+ - Add mute buttons
+ - Add move input sink option
