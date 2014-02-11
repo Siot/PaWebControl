@@ -5,7 +5,6 @@ PulseAudio Web Volume Control
 
 Requirements:
 
-- jQuery
 - PHP web server
 - PulseAudio pactl command
 
