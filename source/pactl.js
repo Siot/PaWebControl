@@ -25,7 +25,6 @@ function showPanel(data){
 	
 	$('input[type="range"]').on("change",function(){
        xhr_get({id: this.id, volume: this.value});
-     //  intervalID = window.setInterval("xhr_get({})", 1000);
     });
     
     $('input[type="range"]').on('touchstart mousedown', function(){
