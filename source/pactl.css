@@ -10,6 +10,11 @@ input[type="text"]{
 	text-align:center;
 	vertical-align:middle;
 }
+input[type="checkbox"]{
+	vertical-align:middle;
+	float:right;
+	transform: scale(1.5);
+}
 .inputsink{
 	background-color: #d3d9c6;
 }
