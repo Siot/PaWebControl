@@ -6,14 +6,14 @@ $(document).ready(function() {
 
 function showPanel(data){
 	$.each( data.sinks, function(key, value){
-		composition='<div id="s'+value.id+'">';
-		composition+='<input type="checkbox"';
+		composition='<div id="s'+value.id+'" class="sortable">';
+		composition+='<span><input type="checkbox"';
 		if(value.mute === "yes"){ 
 			composition+=" checked ";
 		}
 		composition+='/>';
-		composition+='<input type="text" value="'+value.volume+'" disabled />';
-		composition+=value.description;
+		composition+='<input type="text" value="'+value.volume+'" disabled /> ';
+		composition+=value.description + "</span>";
 		composition+='<input type="range" min="0" max="153" step="1" value="'+value.volume+'"';
 		if(value.mute === "yes"){ 
 			composition+=" disabled ";
@@ -25,13 +25,13 @@ function showPanel(data){
 
 	$.each( data.inputs, function(key, value){
 		composition='<div id="i'+value.id+'" class="inputsink">';
-		composition+='<input type="checkbox"';
+		composition+='<span><input type="checkbox"';
 		if(value.mute === "yes"){ 
 			composition+=" checked ";
 		}
 		composition+='/>';
-		composition+='<input type="text" value="'+value.volume+'" disabled />';
-		composition+=value.name; //+"->"+ data.sinks[value.sink].description;
+		composition+='<input type="text" value="'+value.volume+'" disabled /> ';
+		composition+=value.name + "</span>"; //+"->"+ data.sinks[value.sink].description;
 		composition+='<input type="range" min="0" max="153" step="1" value="'+value.volume+'"';
 		if(value.mute === "yes"){ 
 			composition+=" disabled ";
@@ -39,8 +39,27 @@ function showPanel(data){
 		composition+=' />';
 		composition+="</div>";
 		$("#s"+value.sink).append(composition);
+		
+		
+		$(".sortable").sortable({
+			items: "> div",
+			connectWith: ".sortable",
+			receive: function( event, ui ) {
+				console.log("[" + this.id + "] received [" + ui.item.attr("id") + "] from [" + ui.sender.attr("id") + "]");
+				xhr_get({id: ui.item.attr("id"), sink: this.id});
+			},
+			start: function() {
+				clearTimeout(activityTimeout);
+			},
+			stop: function() {
+				resetActive();
+			}
+		});
+		//.disableSelection();
+		
+
 	});
-	
+
 	$('input[type="range"]').on("change",function(){
        xhr_get({id: this.parentNode.id, volume: this.value});
     });
@@ -58,6 +77,7 @@ function showPanel(data){
 		}
        xhr_get({id: this.parentNode.id, mute: value});
     });	
+
 }
 
 function resetActive(){

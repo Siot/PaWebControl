@@ -1,25 +1,29 @@
-input[type="range"]{
+#sinks input[type="range"]{
 	height: 40px;
 	width: 99%;
 	margin: 0;
 	vertical-align:middle;
 	border: 0;
 }
-input[type="text"]{
+#sinks input[type="text"]{
 	width: 3em;
 	text-align:center;
 	vertical-align:middle;
 }
-input[type="checkbox"]{
+#sinks input[type="checkbox"]{
 	vertical-align:middle;
 	float:right;
 	transform: scale(1.5);
 }
-.inputsink{
+#sinks .inputsink{
 	background-color: #d3d9c6;
 }
 #sinks div{
 	padding:2px 0;
+}
+#sinks div span{
+	padding: 10px 0;
+	display: block;
 }
 #sinks {
 	padding-right: 30px;

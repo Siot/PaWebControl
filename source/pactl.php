@@ -8,6 +8,9 @@
 	  if(isset($_REQUEST['mute'])){
 		  $panel->setMute($_REQUEST['id'],$_REQUEST['mute']);
 	  }
+	  if(isset($_REQUEST['sink'])){
+		  $panel->move($_REQUEST['id'],$_REQUEST['sink']);
+	  }
 	  unset($panel);
 	  $panel = new Pactl();
 	}
@@ -80,6 +83,11 @@
 		}else{
 			$this->inputs[substr($id,1)]->setMute($mute);
 		}
+		$this->update();
+	}
+	
+	public function move($id,$sink) {
+		$this->inputs[substr($id,1)]->move(substr($sink,1));
 		$this->update();
 	}
   }
@@ -158,6 +166,11 @@
 		public function setMute($value) {
 			exec(Pactl::LANG . " " . Pactl::CMD . " " . "set-sink-input-mute" . " " . $this->id . " " . $value);
 		}
+		
+		public function move($value) {
+			exec(Pactl::LANG . " " . Pactl::CMD . " " . "move-sink-input" . " " . $this->id . " " . $value);
+		}
+		
 		
 		static public function sink_inputs_filter($data){
 			$elements = array(
