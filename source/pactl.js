@@ -45,7 +45,7 @@ function showPanel(data){
 			items: "> div",
 			connectWith: ".sortable",
 			receive: function( event, ui ) {
-				console.log("[" + this.id + "] received [" + ui.item.attr("id") + "] from [" + ui.sender.attr("id") + "]");
+				//console.log("[" + this.id + "] received [" + ui.item.attr("id") + "] from [" + ui.sender.attr("id") + "]");
 				xhr_get({id: ui.item.attr("id"), sink: this.id});
 			},
 			start: function() {
@@ -100,7 +100,7 @@ function xhr_get(parameters){
 		dataType: "json",
 		data: parameters
 	}).done(function( resp ) {
-		console.log( resp );
+		//console.log( resp );
 		$('#inputs div').remove();
 		$('#sinks div').remove();
 		showPanel(resp);
