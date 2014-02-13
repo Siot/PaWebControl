@@ -18,9 +18,10 @@ Simplest way using standalone php web server:
 
   $ php -S 0.0.0.0:8000 -t public_html/
 
-Use:
+Usage:
 
 Point to IP:8000 of the web server with a web browser from any gadget on your lan.
 
-Roadmap:
- - Add move input sink option
+- Right checkbox = toggle mute
+- Drag&drop input-sink (green box) = move input-sink between sinks (white box)
+- Move slider = change volume (numeric % volum visible on textbox)
