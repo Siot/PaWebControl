@@ -25,3 +25,5 @@ Point to IP:8000 of the web server with a web browser from any gadget on your la
 - Right checkbox = toggle mute
 - Drag&drop input-sink (green box) = move input-sink between sinks (white box)
 - Move slider = change volume (numeric % volum visible on textbox)
+
+Blog (spanish): http://blog.siot.es/2014/02/pawebcontrol-interfaz-web-para.html
