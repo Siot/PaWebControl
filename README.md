@@ -5,6 +5,8 @@ PulseAudio Web Volume Control
 
 A pavucontrol web interface.
 
+![ScreenShot](https://lh5.googleusercontent.com/---4u0K7RKJI/UvqIg4AuM4I/AAAAAAAAALs/vHvX5Jc0oHM/w540-h810-no/PaWebControl.png)
+
 Requirements:
 
 - PHP web server
