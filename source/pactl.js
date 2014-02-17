@@ -75,7 +75,7 @@ function showPanel(data){
 		}else{
 			value = 0;
 		}
-       xhr_get({id: this.parentNode.id, mute: value});
+       xhr_get({id: this.parentNode.parentNode.id, mute: value});
     });	
 
 }
