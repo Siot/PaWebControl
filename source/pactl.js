@@ -14,7 +14,7 @@ function showPanel(data){
 		composition+='/>';
 		composition+='<input type="text" value="'+value.volume+'" disabled /> ';
 		composition+=value.description + "</span>";
-		composition+='<input type="range" min="0" max="153" step="1" value="'+value.volume+'"';
+		composition+='<input type="range" min="0" max="153" step="1" list="volumescale" value="'+value.volume+'"';
 		if(value.mute === "yes"){ 
 			composition+=" disabled ";
 		}
@@ -32,7 +32,7 @@ function showPanel(data){
 		composition+='/>';
 		composition+='<input type="text" value="'+value.volume+'" disabled /> ';
 		composition+=value.name + "</span>"; //+"->"+ data.sinks[value.sink].description;
-		composition+='<input type="range" min="0" max="153" step="1" value="'+value.volume+'"';
+		composition+='<input type="range" min="0" max="153" step="1" list="volumescale" value="'+value.volume+'"';
 		if(value.mute === "yes"){ 
 			composition+=" disabled ";
 		}
