@@ -1,0 +1,48 @@
+
+#sinks input[type="text"]{
+	width: 3em;
+	text-align:center;
+	vertical-align:middle;
+}
+#sinks input[type="range"]{
+	outline: 0;
+}
+
+.slidercontainer {
+	margin: 0 15px 0 15px;
+}
+
+#sinks input[type="checkbox"]{
+	vertical-align:middle;
+	float:right;
+	transform: scale(1.5);
+}
+
+#sinks .inputsink{
+	background-color: #d3d9c6;
+	padding: 20px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+#sinks div{
+	padding:2px 0;
+}
+
+#inputsink div {
+	width: 80%;
+}
+
+#sinks div span{
+	padding: 10px 0;
+	display: block;
+}
+#sinks {
+	padding-right: 30px;
+	padding-left: 5px;
+}
+body{
+	margin:0;
+	padding:0;
+	font-family: Fira Sans;
+}
