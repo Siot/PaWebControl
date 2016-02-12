@@ -17,8 +17,7 @@
 	echo json_encode(objectToArray($panel));
 
   class Pactl {
-	const LANG = "LANG=C";
-	const CMD = "pactl";
+	const CMD = "LANG=C pactl";
 	public $sinks = array();
 	public $inputs = array();
 	
@@ -41,7 +40,7 @@
 		$this->clear();
 		
 		//Create input sinks
-		exec(Pactl::LANG . " " . Pactl::CMD . " " . "list" . " " . SinkInput::CMD, $output);
+		exec(implode(" ", [Pactl::CMD, "list", SinkInput::CMD]), $output);
 		$filteredOutput = array_filter($output,"SinkInput::sink_inputs_filter");
 		$filteredOutput = array_values($filteredOutput);
 		array_walk($filteredOutput, create_function('&$val', '$val = ltrim($val);')); 
@@ -56,7 +55,7 @@
 		unset($id);
 		
 		//Create output sinks
-		exec(Pactl::LANG . " " . Pactl::CMD . " " . "list" . " " . Sink::CMD, $output);
+		exec(implode(" ", [Pactl::CMD, "list", Sink::CMD]), $output);
 		$filteredOutput = array_filter($output,"Sink::sinks_filter");
 		$filteredOutput = array_values($filteredOutput);
 		array_walk($filteredOutput, create_function('&$val', '$val = ltrim($val);')); 
@@ -112,10 +111,10 @@
 			$this->volume = array_sum($volumes[0]) / count($volumes[0]);
 		}
 		public function setVolume($value) {
-			exec(Pactl::LANG . " " . Pactl::CMD . " " . "set-sink-volume" . " " . $this->id . " " . $value . "%");
+			exec(implode(" ", [Pactl::CMD, "set-sink-volume", $this->id, $value . "%"]));
 		}
 		public function setMute($value) {
-			exec(Pactl::LANG . " " . Pactl::CMD . " " . "set-sink-mute" . " " . $this->id . " " . $value);
+			exec(implode(" ", [Pactl::CMD, "set-sink-mute", $this->id, $value]));
 		}
 		
 		static public function sinks_filter($data){
@@ -161,14 +160,14 @@
 			$this->name = trim(substr($data[4], strpos($data[4], "=")+3), '"');
 		}
 		public function setVolume($value) {
-			exec(Pactl::LANG . " " . Pactl::CMD . " " . "set-sink-input-volume" . " " . $this->id . " " . $value . "%");
+			exec(implode(" ", [Pactl::CMD, "set-sink-input-volume", $this->id, $value . "%"]));
 		}
 		public function setMute($value) {
-			exec(Pactl::LANG . " " . Pactl::CMD . " " . "set-sink-input-mute" . " " . $this->id . " " . $value);
+			exec(implode(" ", [Pactl::CMD, "set-sink-input-mute", $this->id, $value]));
 		}
 		
 		public function move($value) {
-			exec(Pactl::LANG . " " . Pactl::CMD . " " . "move-sink-input" . " " . $this->id . " " . $value);
+			exec(implode(" ", [Pactl::CMD, "move-sink-input", $this->id, $value]));
 		}
 		
 		
