@@ -1,0 +1,33 @@
+{
+  "name": "pawebcontrol",
+  "version": "1.0.0",
+  "description": "PulseAudio Web Volume Control",
+  "main": "src/index.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "cp -r source dist && cp node_modules/jquery/dist/jquery.min.js dist/ && cp node_modules/jquery-ui/jquery-ui.js dist/ && cp node_modules/jquery-ui/themes/base/minified/jquery.ui.core.min.css dist/  && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/",
+    "start": "php -S 0.0.0.0:8000 -t dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siot/PaWebControl.git"
+  },
+  "keywords": [
+    "PulseAudio"
+  ],
+  "author": "Llorenç Garcia Martinez",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Siot/PaWebControl/issues"
+  },
+  "homepage": "https://github.com/Siot/PaWebControl#readme",
+  "dependencies": {
+    "jquery": "2.1.0",
+    "jquery-ui": "1.10.4",
+    "jquery-ui-touch-punch": "^0.2.3"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.2"
+  }
+}
