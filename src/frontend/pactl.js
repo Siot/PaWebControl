@@ -1,7 +1,17 @@
+var socket = io();
+
+socket.on('data update', function(msg){
+  console.log('data update', msg)
+  $('#inputs div').remove();
+  $('#sinks div').remove();
+  showPanel(msg);
+});
+
+
 var activityTimeout = setTimeout(inActive, 2000);
 
 $(document).ready(function() {
-	xhr_get({});
+	// xhr_get({});
 });
 
 function showPanel(data){
@@ -46,7 +56,8 @@ function showPanel(data){
 			connectWith: ".sortable",
 			receive: function( event, ui ) {
 				//console.log("[" + this.id + "] received [" + ui.item.attr("id") + "] from [" + ui.sender.attr("id") + "]");
-				xhr_get({id: ui.item.attr("id"), sink: this.id});
+				// xhr_get({id: ui.item.attr("id"), sink: this.id});
+        socket.emit('query', {id: ui.item.attr("id"), sink: this.id});
 			},
 			start: function() {
 				clearTimeout(activityTimeout);
@@ -61,9 +72,10 @@ function showPanel(data){
 	});
 
 	$('input[type="range"]').on("change",function(){
-       xhr_get({id: this.parentNode.id, volume: this.value});
-    });
-    $('input[type="range"]').on('touchstart mousedown', function(){
+    // xhr_get({id: this.parentNode.id, volume: this.value})
+    socket.emit('query', {id: this.parentNode.id, volume: this.value});
+  });
+	$('input[type="range"]').on('touchstart mousedown', function(){
 		clearTimeout(activityTimeout);
 	});
 	$('input[type="range"]').on('touchend mouseup', function(){
@@ -75,7 +87,8 @@ function showPanel(data){
 		}else{
 			value = 0;
 		}
-       xhr_get({id: this.parentNode.parentNode.id, mute: value});
+      // xhr_get({id: this.parentNode.parentNode.id, mute: value});
+    	socket.emit('query', {id: this.parentNode.parentNode.id, mute: value});
     });	
 
 }
@@ -89,10 +102,11 @@ function resetActive(){
 // No activity do something.
 function inActive(){
    $(document.body).attr('class', 'inactive');
-   xhr_get({});
+   // xhr_get({});
    resetActive();
 }
 
+/*
 function xhr_get(parameters){
 	$.ajax({
 		type: "POST",
@@ -106,3 +120,4 @@ function xhr_get(parameters){
 		showPanel(resp);
 	});
 }
+*/

@@ -2,12 +2,36 @@
   "name": "pawebcontrol",
   "version": "1.0.0",
   "description": "PulseAudio Web Volume Control",
-  "main": "src/index.js",
+  "main": "src/backend/index.js",
   "scripts": {
-    "prebuild": "rimraf dist",
-    "build": "cp -r source dist && cp node_modules/jquery/dist/jquery.min.js dist/ && cp node_modules/jquery-ui/jquery-ui.js dist/ && cp node_modules/jquery-ui/themes/base/minified/jquery.ui.core.min.css dist/  && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/",
-    "start": "php -S 0.0.0.0:8000 -t dist/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
+    "prebuild": "rimraf dist && mkdir dist",
+    "build": "cp -r src/frontend dist/client && cp node_modules/jquery/dist/jquery.min.js dist/client && cp node_modules/jquery-ui/jquery-ui.js dist/client && cp node_modules/jquery-ui/themes/base/minified/jquery.ui.core.min.css dist/client && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/client",
+    "start:node": "ts-node src/backend/index.ts",
+    "start:node-dev": "ts-node-dev --no-notify src/backend/index.ts",
+    "start:php": "php -S 0.0.0.0:8000 -t dist/",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "lint-staged",
+    "commit": "git-cz"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   },
   "repository": {
     "type": "git",
@@ -23,11 +47,28 @@
   },
   "homepage": "https://github.com/Siot/PaWebControl#readme",
   "dependencies": {
+    "express": "^4.16.3",
     "jquery": "2.1.0",
     "jquery-ui": "1.10.4",
-    "jquery-ui-touch-punch": "^0.2.3"
+    "jquery-ui-touch-punch": "^0.2.3",
+    "socket.io": "^2.1.1",
+    "ts-node": "^7.0.0"
   },
   "devDependencies": {
-    "rimraf": "^2.6.2"
+    "@types/express": "^4.16.0",
+    "@types/node": "^10.5.2",
+    "@types/socket.io": "^1.4.36",
+    "commitizen": "^2.10.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "husky": "^0.14.0",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.13.7",
+    "rimraf": "^2.6.2",
+    "ts-node-dev": "^1.0.0-pre.26",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "tslint-config-standard": "^7.1.0",
+    "typescript": "^2.9.2",
+    "validate-commit-msg": "^2.12.2"
   }
 }
