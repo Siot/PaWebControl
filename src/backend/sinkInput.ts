@@ -1,6 +1,8 @@
+import * as child from 'child_process'
+
 import { Pactl } from './pactl'
 import { StringUtils } from './stringUtils'
-import * as child from 'child_process'
+
 const { promisify } = require('util')
 
 const exec = promisify(child.exec)

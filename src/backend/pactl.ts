@@ -1,7 +1,9 @@
 import * as child from 'child_process'
-const { promisify } = require('util')
-import { SinkInput } from './sinkInput'
+
 import { Sink } from './sink'
+import { SinkInput } from './sinkInput'
+
+const { promisify } = require('util')
 
 const exec = promisify(child.exec)
 

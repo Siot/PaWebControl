@@ -1,6 +1,8 @@
-import * as express from 'express'
 import * as http from 'http'
+
+import * as express from 'express'
 import * as socketIo from 'socket.io'
+
 import { Pactl } from './pactl'
 
 export class PAServer {
