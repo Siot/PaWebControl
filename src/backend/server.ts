@@ -1,6 +1,7 @@
 import * as express from 'express'
 import * as http from 'http'
 import * as socketIo from 'socket.io'
+import { Pactl } from './pactl'
 
 export class PAServer {
   private _app: express.Application
@@ -24,21 +25,45 @@ export class PAServer {
 
     this.io.on('connection', (socket: any) => {
       console.log('a user connected')
-      const result = {
-        sinks: [
-          { id: '0', description: 'Audio intern Digital Stereo (HDMI)', mute: 'no', volume: 100 }
-        ],
-        inputs: []
-      }
+
+      this.sendData(socket)
+
       setInterval(() => {
-        socket.emit('data update', result)
+        this.sendData(socket)
       }, 3000)
 
       socket.on('query', function(msg: any) {
-        console.log('query', msg)
+        ;(async () => {
+          let panel = new Pactl()
+          await panel.ready
+          if (msg.id !== undefined) {
+            if (msg.volume) {
+              await panel.setVolume(msg.id, msg.volume)
+            }
+            if (msg.mute !== undefined) {
+              await panel.setMute(msg.id, msg.mute)
+            }
+            if (msg.sink !== undefined) {
+              await panel.move(msg.id, msg.sink)
+            }
+            // unset($panel);
+            panel = new Pactl()
+            await panel.ready
+          }
+
+          socket.emit('data update', panel.getData())
+        })()
       })
     })
 
     this.server.listen(3000, () => console.log('Example app listening on port 3000!'))
+  }
+
+  private sendData(socket: any): void {
+    ;(async () => {
+      let panel = new Pactl()
+      await panel.ready
+      socket.emit('data update', panel.getData())
+    })()
   }
 }
