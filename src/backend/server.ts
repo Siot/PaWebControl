@@ -58,7 +58,7 @@ export class PAServer {
       })
     })
 
-    this.server.listen(3000, () => console.log('Example app listening on port 3000!'))
+    this.server.listen(8000, () => console.log('Example app listening on port 8000!'))
   }
 
   private sendData(socket: any): void {

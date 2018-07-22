@@ -7,8 +7,8 @@
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist && mkdir dist",
     "build": "cp -r src/frontend dist/client && cp node_modules/jquery/dist/jquery.js dist/client && echo \"$(tail -n +2 node_modules/jquery-ui/jquery-ui.js)\" > dist/client/jquery-ui.js && cp node_modules/jquery-ui/themes/base/minified/jquery.ui.core.min.css dist/client && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js dist/client",
-    "start:node": "ts-node src/backend/index.ts",
-    "start:node-dev": "ts-node-dev $NODE_DEBUG_OPTION --no-notify src/backend/index.ts",
+    "start": "ts-node src/backend/index.ts",
+    "start:dev": "ts-node-dev $NODE_DEBUG_OPTION --no-notify src/backend/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "lint-staged",
     "commit": "git-cz"
