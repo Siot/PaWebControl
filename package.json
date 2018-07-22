@@ -1,6 +1,6 @@
 {
   "name": "pawebcontrol",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "PulseAudio Web Volume Control",
   "main": "src/backend/index.js",
   "scripts": {
@@ -9,7 +9,6 @@
     "build": "cp -r src/frontend dist/client && cp node_modules/jquery/dist/jquery.js dist/client && echo \"$(tail -n +2 node_modules/jquery-ui/jquery-ui.js)\" > dist/client/jquery-ui.js && cp node_modules/jquery-ui/themes/base/minified/jquery.ui.core.min.css dist/client && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js dist/client",
     "start:node": "ts-node src/backend/index.ts",
     "start:node-dev": "ts-node-dev $NODE_DEBUG_OPTION --no-notify src/backend/index.ts",
-    "start:php": "php -S 0.0.0.0:8000 -t dist/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "lint-staged",
     "commit": "git-cz"
@@ -75,8 +74,8 @@
     "prettier": "^1.13.7",
     "rimraf": "^2.6.2",
     "ts-node-dev": "^1.0.0-pre.26",
-    "tslint": "^5.10.0",
-    "tslint-config-prettier": "^1.13.0",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.14.0",
     "tslint-config-standard": "^7.1.0",
     "typescript": "^2.9.2",
     "validate-commit-msg": "^2.12.2"
