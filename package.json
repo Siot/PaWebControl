@@ -9,7 +9,7 @@
     "build": "cp -r src/frontend dist/client && cp node_modules/jquery/dist/jquery.js dist/client && echo \"$(tail -n +2 node_modules/jquery-ui/jquery-ui.js)\" > dist/client/jquery-ui.js && cp node_modules/jquery-ui/themes/base/minified/jquery.ui.core.min.css dist/client && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js dist/client",
     "start": "ts-node src/backend/index.ts",
     "start:dev": "ts-node-dev $NODE_DEBUG_OPTION --no-notify src/backend/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "precommit": "lint-staged",
     "commit": "git-cz"
   },
@@ -62,6 +62,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.16.0",
+    "@types/jest": "^23.3.9",
     "@types/node": "^10.5.2",
     "@types/socket.io": "^1.4.36",
     "commitizen": "^2.10.1",
@@ -70,9 +71,11 @@
     "import-sort-cli": "^5.0.0",
     "import-sort-parser-typescript": "^5.0.0",
     "import-sort-style-module": "^5.0.0",
+    "jest": "^23.6.0",
     "lint-staged": "^7.2.0",
     "prettier": "^1.13.7",
     "rimraf": "^2.6.2",
+    "ts-jest": "^23.10.4",
     "ts-node-dev": "^1.0.0-pre.26",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.14.0",
