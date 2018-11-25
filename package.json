@@ -5,13 +5,14 @@
   "main": "src/backend/index.js",
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
-    "prebuild": "rimraf dist && mkdir dist",
-    "build": "cp -r src/frontend dist/client && cp node_modules/jquery/dist/jquery.js dist/client && echo \"$(tail -n +2 node_modules/jquery-ui/jquery-ui.js)\" > dist/client/jquery-ui.js && cp node_modules/jquery-ui/themes/base/minified/jquery.ui.core.min.css dist/client && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js dist/client",
+    "prebuild": "rimraf dist && mkdir dist && cd node_modules/jquery-ui/ && grunt jenkins",
+    "build": "cp -r src/frontend dist/client && cp node_modules/jquery/dist/jquery.js dist/client && cp node_modules/jquery-ui/dist/jquery-ui.js dist/client && cp node_modules/jquery-ui/dist/jquery-ui.css dist/client && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js dist/client",
     "start": "ts-node src/backend/index.ts",
     "start:dev": "ts-node-dev $NODE_DEBUG_OPTION --no-notify src/backend/index.ts",
     "test": "jest",
     "precommit": "lint-staged",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "postinstall": "cd node_modules/jquery-ui && npm install"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
