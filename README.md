@@ -1,6 +1,8 @@
 PaWebControl
 ============
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Siot/PaWebControl.svg)](https://greenkeeper.io/)
+
 PulseAudio Web Volume Control
 
 A pavucontrol web interface.
