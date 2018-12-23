@@ -10,9 +10,13 @@
     "start": "ts-node src/backend/index.ts",
     "start:dev": "ts-node-dev $NODE_DEBUG_OPTION --no-notify src/backend/index.ts",
     "test": "jest",
-    "precommit": "lint-staged",
     "commit": "git-cz",
     "postinstall": "cd node_modules/jquery-ui && npm install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -64,8 +68,8 @@
   "devDependencies": {
     "@types/express": "^4.16.0",
     "@types/jest": "^23.3.10",
-    "@types/node": "^10.12.11",
-    "@types/socket.io": "^2.1.0",
+    "@types/node": "^10.12.18",
+    "@types/socket.io": "^2.1.2",
     "commitizen": "^3.0.4",
     "cz-conventional-changelog": "^2.1.0",
     "husky": "^1.1.4",
