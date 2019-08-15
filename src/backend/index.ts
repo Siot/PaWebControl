@@ -1,5 +1,5 @@
-import { PAServer } from './server'
+import { PAServer } from './server';
 
-let app = new PAServer().app
+const app = new PAServer().app;
 
-export { app }
+export { app };
