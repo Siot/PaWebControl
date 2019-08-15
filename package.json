@@ -10,7 +10,6 @@
     "start": "ts-node src/backend/index.ts",
     "start:dev": "ts-node-dev $NODE_DEBUG_OPTION --no-notify src/backend/index.ts",
     "test": "jest",
-    "commit": "git-cz",
     "postinstall": "cd node_modules/jquery-ui && npm install"
   },
   "husky": {
