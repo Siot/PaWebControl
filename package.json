@@ -20,29 +20,14 @@
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
-      "import-sort --write",
+      "prettier --write",
+      "tslint --fix",
+      "git add"
+    ],
+    "*.{json,md,js,html}": [
       "prettier --write",
       "git add"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    },
-    "validate-commit-msg": {
-      "types": "conventional-commit-types",
-      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
-    }
-  },
-  "prettier": {
-    "semi": true,
-    "singleQuote": true
-  },
-  "importSort": {
-    ".ts, .tsx": {
-      "parser": "typescript",
-      "style": "module"
-    }
   },
   "repository": {
     "type": "git",
@@ -70,12 +55,7 @@
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/socket.io": "^2.1.2",
-    "commitizen": "^3.0.4",
-    "cz-conventional-changelog": "^2.1.0",
     "husky": "^3.0.0",
-    "import-sort-cli": "^6.0.0",
-    "import-sort-parser-typescript": "^6.0.0",
-    "import-sort-style-module": "^6.0.0",
     "jest": "^23.6.0",
     "lint-staged": "^9.0.0",
     "prettier": "^1.13.7",
@@ -84,8 +64,6 @@
     "ts-node-dev": "^1.0.0-pre.26",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.17.0",
-    "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.1.6",
-    "validate-commit-msg": "^2.12.2"
+    "typescript": "^3.1.6"
   }
 }
