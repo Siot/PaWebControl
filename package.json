@@ -68,7 +68,7 @@
   "devDependencies": {
     "@types/express": "^4.16.0",
     "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
+    "@types/node": "^12.7.2",
     "@types/socket.io": "^2.1.2",
     "commitizen": "^4.0.0",
     "cz-conventional-changelog": "^2.1.0",
