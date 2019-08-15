@@ -22,7 +22,7 @@ export class PAServer {
     this.app.use(express.static('dist/client'));
 
     this.io.on('connection', (socket: any) => {
-      // console.log('a user connected');
+      console.log('a user connected');
 
       this.sendData(socket);
 
@@ -55,7 +55,7 @@ export class PAServer {
     });
 
     this.server.listen(8000, () => {
-      /* console.log('Example app listening on port 8000!') */
+      console.log('Example app listening on port 8000!');
     });
   }
 
