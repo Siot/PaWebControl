@@ -1,35 +1,36 @@
-#sinks input[type="range"]{
-	height: 40px;
-	width: 99%;
-	margin: 0;
-	vertical-align:middle;
-	border: 0;
+#sinks input[type='range'] {
+  height: 40px;
+  width: 99%;
+  margin: 0;
+  vertical-align: middle;
+  border: 0;
 }
-#sinks input[type="text"]{
-	width: 3em;
-	text-align:center;
-	vertical-align:middle;
+#sinks input[type='text'] {
+  width: 3em;
+  text-align: center;
+  vertical-align: middle;
 }
-#sinks input[type="checkbox"]{
-	vertical-align:middle;
-	float:right;
-	transform: scale(1.5);
+#sinks input[type='checkbox'] {
+  vertical-align: middle;
+  float: right;
+  transform: scale(1.5);
 }
-#sinks .inputsink{
-	background-color: #d3d9c6;
+
+#sinks .inputsink {
+  background-color: #d3d9c6;
 }
-#sinks div{
-	padding:2px 0;
+#sinks div {
+  padding: 2px 0;
 }
-#sinks div span{
-	padding: 10px 0;
-	display: block;
+#sinks div span {
+  padding: 10px 0;
+  display: block;
 }
 #sinks {
-	padding-right: 30px;
-	padding-left: 5px;
+  padding-right: 30px;
+  padding-left: 5px;
 }
-body{
-	margin:0;
-	padding:0;
+body {
+  margin: 0;
+  padding: 0;
 }
