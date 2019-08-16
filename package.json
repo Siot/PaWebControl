@@ -18,12 +18,12 @@
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
-      "prettier --write",
+      "npx prettier --write",
       "tslint --fix",
       "git add"
     ],
     "*.{json,md,js,html}": [
-      "prettier --write",
+      "npx prettier --write",
       "git add"
     ]
   },
