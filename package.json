@@ -42,7 +42,7 @@
   "homepage": "https://github.com/Siot/PaWebControl#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "socket.io": "^2.1.1",
     "sortablejs": "^1.10.0-rc3",
     "ts-node": "^8.0.3"
