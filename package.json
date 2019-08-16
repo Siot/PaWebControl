@@ -5,12 +5,11 @@
   "main": "src/backend/index.js",
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
-    "prebuild": "rimraf dist && mkdir dist && cd node_modules/jquery-ui/ && grunt jenkins",
-    "build": "cp -r src/frontend dist/client && cp node_modules/jquery/dist/jquery.js dist/client && cp node_modules/jquery-ui/dist/jquery-ui.js dist/client && cp node_modules/jquery-ui/dist/jquery-ui.css dist/client && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js dist/client",
+    "prebuild": "rimraf dist && mkdir dist",
+    "build": "cp -r src/frontend dist/client && webpack",
     "start": "ts-node src/backend/index.ts",
-    "start:dev": "ts-node-dev $NODE_DEBUG_OPTION --no-notify src/backend/index.ts",
-    "test": "jest",
-    "postinstall": "cd node_modules/jquery-ui && npm install"
+    "start:dev": "ts-node-dev $NODE_DEBUG_OPTION --no-notify src/backend/index.ts && webpack --watch",
+    "test": "jest"
   },
   "husky": {
     "hooks": {
@@ -43,10 +42,9 @@
   "homepage": "https://github.com/Siot/PaWebControl#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "jquery": "3.3.1",
-    "jquery-ui": "1.12.1",
-    "jquery-ui-touch-punch": "^0.2.3",
+    "jquery": "^3.3.1",
     "socket.io": "^2.1.1",
+    "sortablejs": "^1.10.0-rc3",
     "ts-node": "^8.0.3"
   },
   "devDependencies": {
@@ -55,14 +53,16 @@
     "@types/node": "^12.0.0",
     "@types/socket.io": "^2.1.2",
     "husky": "^3.0.0",
-    "jest": "^23.6.0",
+    "jest": "^24.0.0",
     "lint-staged": "^9.0.0",
-    "prettier": "^1.13.7",
+    "prettier": "^1.18.2",
     "rimraf": "^2.6.2",
     "ts-jest": "^24.0.0",
     "ts-node-dev": "^1.0.0-pre.26",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.17.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
   }
 }
