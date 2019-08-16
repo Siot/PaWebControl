@@ -6,4 +6,6 @@ addons:
   sonarcloud:
     organization: "siot-github"
 script:
+  - npm run build
+  - npm run test
   - sonar-scanner
