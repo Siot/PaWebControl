@@ -5,13 +5,11 @@
   "main": "src/backend/index.js",
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
-    "prebuild": "rimraf dist && mkdir dist && cd node_modules/jquery-ui/ && grunt jenkins",
-    "build": "cp -r src/frontend dist/client && cp node_modules/jquery/dist/jquery.js dist/client && cp node_modules/jquery-ui/dist/jquery-ui.js dist/client && cp node_modules/jquery-ui/dist/jquery-ui.css dist/client && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js dist/client",
+    "prebuild": "rimraf dist && mkdir dist",
+    "build": "cp -r src/frontend dist/client && webpack",
     "start": "ts-node src/backend/index.ts",
-    "start:dev": "ts-node-dev $NODE_DEBUG_OPTION --no-notify src/backend/index.ts",
-    "test": "jest",
-    "commit": "git-cz",
-    "postinstall": "cd node_modules/jquery-ui && npm install"
+    "start:dev": "ts-node-dev $NODE_DEBUG_OPTION --no-notify src/backend/index.ts && webpack --watch",
+    "test": "jest"
   },
   "husky": {
     "hooks": {
@@ -20,29 +18,14 @@
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
-      "import-sort --write",
+      "prettier --write",
+      "tslint --fix",
+      "git add"
+    ],
+    "*.{json,md,js,html}": [
       "prettier --write",
       "git add"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    },
-    "validate-commit-msg": {
-      "types": "conventional-commit-types",
-      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
-    }
-  },
-  "prettier": {
-    "semi": true,
-    "singleQuote": true
-  },
-  "importSort": {
-    ".ts, .tsx": {
-      "parser": "typescript",
-      "style": "module"
-    }
   },
   "repository": {
     "type": "git",
@@ -59,10 +42,9 @@
   "homepage": "https://github.com/Siot/PaWebControl#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "jquery": "3.3.1",
-    "jquery-ui": "1.12.1",
-    "jquery-ui-touch-punch": "^0.2.3",
+    "jquery": "^3.3.1",
     "socket.io": "^2.1.1",
+    "sortablejs": "^1.10.0-rc3",
     "ts-node": "^8.0.3"
   },
   "devDependencies": {
@@ -70,22 +52,17 @@
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/socket.io": "^2.1.2",
-    "commitizen": "^4.0.0",
-    "cz-conventional-changelog": "^3.0.0",
     "husky": "^3.0.0",
-    "import-sort-cli": "^6.0.0",
-    "import-sort-parser-typescript": "^6.0.0",
-    "import-sort-style-module": "^6.0.0",
-    "jest": "^23.6.0",
+    "jest": "^24.0.0",
     "lint-staged": "^9.0.0",
-    "prettier": "^1.13.7",
+    "prettier": "^1.18.2",
     "rimraf": "^2.6.2",
     "ts-jest": "^24.0.0",
     "ts-node-dev": "^1.0.0-pre.26",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.17.0",
-    "tslint-config-standard": "^8.0.1",
     "typescript": "^3.1.6",
-    "validate-commit-msg": "^2.12.2"
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
   }
 }
