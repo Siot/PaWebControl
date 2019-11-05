@@ -24,7 +24,7 @@ export class PAServer {
         host: 'localhost',
         method: 'GET',
         path: req.url,
-        port: 8080
+        port: 9001
       };
 
       const creq = http

@@ -36,6 +36,9 @@ module.exports = {
         use: ['file-loader?name=[name].[ext]']
       }
     ]
+  },
+  devServer: {
+    port: 9001
   }
   /*  ,
   optimization: {
