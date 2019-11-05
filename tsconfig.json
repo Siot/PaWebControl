@@ -2,16 +2,12 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "es6",
-    "module":"commonjs",
+    "module": "commonjs",
     "strict": true,
     "sourceMap": true,
     "removeComments": true,
-    "outDir": "dist/lib",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "outDir": "dist",
+    "typeRoots": ["node_modules/@types"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
