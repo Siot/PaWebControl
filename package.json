@@ -62,7 +62,7 @@
     "lint-staged": "^9.0.0",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.2",
-    "stylelint": "^10.1.0",
+    "stylelint": "^11.0.0",
     "stylelint-config-recommended": "^3.0.0",
     "ts-jest": "^24.0.0",
     "ts-node-dev": "^1.0.0-pre.26",
