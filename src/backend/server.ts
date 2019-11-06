@@ -18,8 +18,46 @@ export class PAServer {
   }
 
   private listen(): void {
-    this.app.get('/', (req: any, res: any) => res.redirect('/index.html'));
-    this.app.use(express.static('dist/client'));
+    this.app.get('*', (req: any, res: any) => {
+      const options = {
+        headers: req.headers,
+        host: 'localhost',
+        method: 'GET',
+        path: req.url,
+        port: 9001
+      };
+
+      const creq = http
+        .request(options, cres => {
+          // set encoding
+          cres.setEncoding('utf8');
+
+          // wait for data
+          cres.on('data', chunk => {
+            res.write(chunk);
+          });
+
+          cres.on('close', () => {
+            // closed, let's end client request as well
+            // res.writeHead(cres.statusCode);
+            res.end();
+          });
+
+          cres.on('end', () => {
+            // finished, let's finish client request as well
+            // res.writeHead(cres.statusCode);
+            res.end();
+          });
+        })
+        .on('error', e => {
+          // we got an error, return 500 error to client and log error
+          console.log(e.message);
+          // res.writeHead(500);
+          res.end();
+        });
+
+      creq.end();
+    });
 
     this.io.on('connection', (socket: any) => {
       console.log('a user connected');

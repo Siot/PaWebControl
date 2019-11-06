@@ -1,5 +1,4 @@
-PaWebControl
-============
+# PaWebControl
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/Siot/PaWebControl.svg)](https://greenkeeper.io/)
 
@@ -18,7 +17,7 @@ Installation:
 
 - Clone this repo.
 
-- Run `$ npm install && npm run build`
+- Run `$ npm ci`
 
 Start server:
 

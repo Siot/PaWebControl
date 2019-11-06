@@ -1,6 +1,25 @@
 import Sortable from 'sortablejs';
 import $ from 'jquery';
 import openSocket from 'socket.io-client';
+import './pactl.css';
+
+function setup() {
+  const sinks = document.createElement('div');
+  sinks.id = 'sinks';
+
+  const volumescale = document.createElement('datalist');
+  volumescale.id = 'volumescale';
+
+  const option = document.createElement('option');
+  option.innerHTML = '100';
+
+  volumescale.appendChild(option);
+
+  document.body.appendChild(sinks);
+  document.body.appendChild(volumescale);
+}
+
+setup();
 
 const socket = openSocket();
 
